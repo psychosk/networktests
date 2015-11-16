@@ -18,7 +18,7 @@ class UDPServer {
 			int returnPort = receivePacket.getPort();
 			String capitalizedSentence = sentence.toUpperCase();
 			sendData = capitalizedSentence.getBytes();
-			System.out.println("Sending back to "+IPAddress.getHostAddress()+":"+returnPort);
+			System.out.println("Sending back to "+IPAddress.getHostAddress()+":"+returnPort+"?"+receivePacket.getSocketAddress());
 			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, returnPort);
 			serverSocket.send(sendPacket);
 		}
