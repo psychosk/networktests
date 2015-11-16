@@ -6,8 +6,9 @@ import java.net.*;
 public class UDPClient {
 
 	public static void main(String args[]) throws Exception {
-		System.out.println(args[1]);
-		System.out.println(args[2]);
+		String url = args[0];
+		int port = Integer.parseInt(args[1]);
+		
 		BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 		DatagramSocket clientSocket = new DatagramSocket();
 		InetAddress IPAddress = InetAddress.getByName("localhost");
@@ -16,6 +17,7 @@ public class UDPClient {
 		String sentence = inFromUser.readLine();
 		sendData = sentence.getBytes();
 		DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
+		System.out.println("Sending to "+url + ":"+port);
 		clientSocket.send(sendPacket);
 		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 		clientSocket.receive(receivePacket);
