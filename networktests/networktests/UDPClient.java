@@ -17,7 +17,8 @@ public class UDPClient {
 		String sentence = inFromUser.readLine();
 		sendData = sentence.getBytes();
 		DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
-		System.out.println("Sending to "+url + ":"+port);
+		
+		System.out.println("Sending to "+url + ":"+port+"?"+sendPacket.getPort()+"?"+sendPacket.getSocketAddress());
 		clientSocket.send(sendPacket);
 		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 		clientSocket.receive(receivePacket);
