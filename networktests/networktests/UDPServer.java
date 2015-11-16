@@ -15,10 +15,11 @@ class UDPServer {
 			String sentence = new String(receivePacket.getData());
 			System.out.println("RECEIVED: " + sentence);
 			InetAddress IPAddress = receivePacket.getAddress();
-			int port = receivePacket.getPort();
+			int returnPort = receivePacket.getPort();
 			String capitalizedSentence = sentence.toUpperCase();
 			sendData = capitalizedSentence.getBytes();
-			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+			System.out.println("Sending back to "+IPAddress.getHostAddress()+":"+returnPort);
+			DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, returnPort);
 			serverSocket.send(sendPacket);
 		}
 	}
