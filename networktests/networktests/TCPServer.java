@@ -12,7 +12,7 @@ class TCPServer {
 			ServerSocket srvr = new ServerSocket(port);
 			while (true) {
 				Socket skt = srvr.accept();
-				System.out.print("Server has connected!\n");
+				System.out.print("Server has a connection from " + skt.getPort() +" : " + skt.getLocalPort());
 				PrintWriter out = new PrintWriter(skt.getOutputStream(), true);
 				System.out.print("Sending string: '" + data + "'\n");
 				out.print(data);
