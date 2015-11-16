@@ -6,6 +6,8 @@ import java.net.*;
 public class UDPClient {
 
 	public static void main(String args[]) throws Exception {
+		System.out.println(args[1]);
+		System.out.println(args[2]);
 		BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 		DatagramSocket clientSocket = new DatagramSocket();
 		InetAddress IPAddress = InetAddress.getByName("localhost");
