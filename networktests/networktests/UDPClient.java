@@ -11,14 +11,14 @@ public class UDPClient {
 		
 
 		DatagramSocket clientSocket = new DatagramSocket();
-		InetAddress IPAddress = InetAddress.getByName("localhost");
+		InetAddress IPAddress = InetAddress.getByName(url);
 		byte[] sendData = new byte[1024];
 		byte[] receiveData = new byte[1024];
 		String sentence = "smartsense";
 		sendData = sentence.getBytes();
 		DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
 		
-		System.out.println("Sending to "+url + ":"+port+"?"+sendPacket.getPort()+"?"+sendPacket.getSocketAddress()+"?"+clientSocket.getLocalPort());
+		System.out.println("Sending to "+IPAddress.getHostAddress()+ ":"+port+"?"+sendPacket.getPort()+"?"+sendPacket.getSocketAddress()+"?"+clientSocket.getLocalPort());
 		clientSocket.send(sendPacket);
 		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 		clientSocket.receive(receivePacket);
