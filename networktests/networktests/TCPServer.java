@@ -4,7 +4,7 @@ import java.lang.*;
 import java.io.*;
 import java.net.*;
 
-class Server {
+class TCPServer {
    public static void main(String args[]) {
 	   int port = Integer.parseInt(args[0]);
       String data = "Toobie ornaught toobie";
